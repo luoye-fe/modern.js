@@ -63,6 +63,8 @@
     "@rspack/postcss-loader": "0.1.10",
     "caniuse-lite": "^1.0.30001451",
     "core-js": "~3.30.0",
+    "css-minimizer-webpack-plugin": "5.0.0",
+    "cssnano": "6.0.0",
     "rspack-plugin-virtual-module": "0.1.0"
   },
   "devDependencies": {

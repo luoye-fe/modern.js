@@ -91,6 +91,8 @@ importers:
       antd: '4'
       caniuse-lite: ^1.0.30001451
       core-js: ~3.30.0
+      css-minimizer-webpack-plugin: 5.0.0
+      cssnano: 6.0.0
       postcss: 8.4.21
       react: ^18
       react-dom: ^18
@@ -109,6 +111,8 @@ importers:
       '@rspack/postcss-loader': 0.1.10
       caniuse-lite: 1.0.30001451
       core-js: 3.30.0
+      css-minimizer-webpack-plugin: 5.0.0
+      cssnano: 6.0.0_postcss@8.4.21
       rspack-plugin-virtual-module: 0.1.0
     devDependencies:
       '@modern-js/e2e': link:../../toolkit/e2e
@@ -17916,6 +17920,39 @@ packages:
       semver: 7.3.8
       webpack: 5.82.1
     dev: true
+
+  /css-minimizer-webpack-plugin/5.0.0:
+    resolution: {integrity: sha512-1wZ/PYvg+ZKwi5FX6YrvbB31jMAdurS+CmRQLwWCVSlfzJC85l/a6RVICqUHFa+jXyhilfnCyjafzJGbmz5tcA==}
+    engines: {node: '>= 14.15.0'}
+    peerDependencies:
+      '@parcel/css': '*'
+      '@swc/css': '*'
+      clean-css: '*'
+      csso: '*'
+      esbuild: '*'
+      lightningcss: '*'
+      webpack: ^5.0.0
+    peerDependenciesMeta:
+      '@parcel/css':
+        optional: true
+      '@swc/css':
+        optional: true
+      clean-css:
+        optional: true
+      csso:
+        optional: true
+      esbuild:
+        optional: true
+      lightningcss:
+        optional: true
+    dependencies:
+      cssnano: 6.0.0_postcss@8.4.21
+      jest-worker: 29.5.0
+      postcss: 8.4.21
+      schema-utils: 4.0.0
+      serialize-javascript: 6.0.1
+      source-map: 0.6.1
+    dev: false
 
   /css-minimizer-webpack-plugin/5.0.0_webpack@5.82.1:
     resolution: {integrity: sha512-1wZ/PYvg+ZKwi5FX6YrvbB31jMAdurS+CmRQLwWCVSlfzJC85l/a6RVICqUHFa+jXyhilfnCyjafzJGbmz5tcA==}

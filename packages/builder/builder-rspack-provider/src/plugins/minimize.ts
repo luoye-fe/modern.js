@@ -5,6 +5,8 @@ import type {
   RspackConfig,
   RspackBuiltinsConfig,
 } from '../types';
+import { applyCSSMinimizer } from './css-community';
+import { enableNativeCss } from './css';
 
 export async function applyJSMinimizer(
   rspackConfig: RspackConfig,
@@ -45,6 +47,16 @@ export const builderPluginMinimize = (): BuilderPlugin => ({
   name: 'builder-plugin-minimize',
 
   setup(api) {
+    api.modifyBundlerChain(async (chain, { isProd }) => {
+      const config = api.getNormalizedConfig();
+      const isMinimize = isProd && !config.output.disableMinimize;
+
+      if (isMinimize) {
+        if (!enableNativeCss(config)) {
+          await applyCSSMinimizer(chain, config);
+        }
+      }
+    });
     api.modifyRspackConfig(async (rspackConfig, { isProd }) => {
       const config = api.getNormalizedConfig();
       const isMinimize = isProd && !config.output.disableMinimize;

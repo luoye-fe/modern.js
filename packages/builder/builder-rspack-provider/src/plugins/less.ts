@@ -15,8 +15,7 @@ export function builderPluginLess(): BuilderPlugin {
 
         const rule = chain.module
           .rule(utils.CHAIN_ID.RULE.LESS)
-          .test(LESS_REGEX)
-          .type('css');
+          .test(LESS_REGEX);
 
         await applyBaseCSSRule(rule, config, api.context, utils);
 
@@ -41,13 +40,9 @@ export function builderPluginLess(): BuilderPlugin {
         const { applyCSSModuleRule } = await import('./css');
         const config = api.getNormalizedConfig();
 
-        const rules = rspackConfig.module?.rules;
+        // const rules = rspackConfig.module?.rules;
 
-        applyCSSModuleRule(
-          rules,
-          LESS_REGEX,
-          config.output.disableCssModuleExtension,
-        );
+        applyCSSModuleRule(rspackConfig, config, LESS_REGEX);
       });
     },
   };
