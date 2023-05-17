@@ -5,6 +5,41 @@ import { builderPluginLess } from '@/plugins/less';
 import { builderPluginSass } from '@/plugins/sass';
 
 describe('plugins/css', () => {
+  it('should use css-loader + style-loader when disableCssExtract is true', async () => {
+    const builder = await createBuilder({
+      plugins: [builderPluginCss()],
+      builderConfig: {
+        output: {
+          disableCssExtract: true,
+        },
+      },
+    });
+
+    const {
+      origin: { bundlerConfigs },
+    } = await builder.inspectConfig();
+
+    expect(bundlerConfigs[0]).toMatchSnapshot();
+  });
+
+  it('should apply ignoreCssLoader when disableCssExtract is true and target is node', async () => {
+    const builder = await createBuilder({
+      plugins: [builderPluginCss()],
+      target: 'node',
+      builderConfig: {
+        output: {
+          disableCssExtract: true,
+        },
+      },
+    });
+
+    const {
+      origin: { bundlerConfigs },
+    } = await builder.inspectConfig();
+
+    expect(bundlerConfigs[0]).toMatchSnapshot();
+  });
+
   it('should override browserslist of autoprefixer when using output.overrideBrowserslist config', async () => {
     const builder = await createBuilder({
       plugins: [builderPluginCss()],

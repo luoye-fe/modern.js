@@ -73,13 +73,7 @@ export function builderPluginStylus(
 
           const config = api.getNormalizedConfig();
 
-          const rules = rspackConfig.module?.rules;
-
-          applyCSSModuleRule(
-            rules,
-            STYLUS_REGEX,
-            config.output.disableCssModuleExtension,
-          );
+          applyCSSModuleRule(rspackConfig, config as any, STYLUS_REGEX);
         });
     },
   };

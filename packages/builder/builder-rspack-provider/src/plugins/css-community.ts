@@ -234,7 +234,7 @@ export async function applyBaseCSSRule(
   } else {
     rule
       .use(CHAIN_ID.USE.IGNORE_CSS)
-      .loader(path.resolve(__dirname, '../webpackLoaders/ignoreCssLoader'))
+      .loader(path.resolve(__dirname, '../rspackLoaders/ignoreCssLoader'))
       .end();
   }
 
