@@ -238,10 +238,13 @@ export async function applyBaseCSSRule(
       .end();
   }
 
+  // todo: hash
   const localIdentName =
     config.output.cssModuleLocalIdentName ||
     // Using shorter classname in production to reduce bundle size
-    (isProd ? '[hash:base64:5]' : '[path][name]__[local]--[hash:base64:5]');
+    (isProd
+      ? '[xxhash64:hash:base64:5]'
+      : '[path][name]__[local]--[xxhash64:hash:base64:5]');
 
   const mergedCssLoaderOptions = applyOptionsChain<CSSLoaderOptions, null>(
     {
