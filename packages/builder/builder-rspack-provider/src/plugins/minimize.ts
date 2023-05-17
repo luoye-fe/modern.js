@@ -51,10 +51,8 @@ export const builderPluginMinimize = (): BuilderPlugin => ({
       const config = api.getNormalizedConfig();
       const isMinimize = isProd && !config.output.disableMinimize;
 
-      if (isMinimize) {
-        if (!enableNativeCss(config)) {
-          await applyCSSMinimizer(chain, config);
-        }
+      if (isMinimize && !enableNativeCss(config)) {
+        await applyCSSMinimizer(chain, config);
       }
     });
     api.modifyRspackConfig(async (rspackConfig, { isProd }) => {

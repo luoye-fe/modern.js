@@ -114,30 +114,6 @@ export async function applyBaseCSSRule(
     return mergedConfig;
   };
 
-  /**
-   * TODO: support style-loader & ignore css (need Rspack support inline css first)
-   */
-  //   if (isServer || isWebWorker) {
-  //     const { default: ignoreCssLoader } = await import('../loaders/ignoreCssLoader');
-  //     uses.push({
-  //       name: CHAIN_ID.USE.IGNORE_CSS,
-  //       loader: ignoreCssLoader,
-  //     });
-  //   }
-
-  // TODO: use css-modules-typescript-loader
-  // if (enableCSSModuleTS) {
-  //   const { default: cssModulesTypescriptLoader } = await import(
-  //     getCompiledPath('css-modules-typescript-loader')
-  //   );
-
-  //   uses.push({
-  //     name: CHAIN_ID.USE.CSS_MODULES_TS,
-  //     loader: cssModulesTypescriptLoader,
-  //     options: {},
-  //   });
-  // }
-
   if (!isServer && !isWebWorker) {
     const postcssLoaderOptions = getPostcssConfig();
 

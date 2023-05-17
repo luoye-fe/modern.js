@@ -38,14 +38,7 @@ export function builderPluginSass(): BuilderPlugin {
         const { applyCSSModuleRule } = await import('./css');
         const config = api.getNormalizedConfig();
 
-        // const rules = rspackConfig.module?.rules;
-
         applyCSSModuleRule(rspackConfig, config, SASS_REGEX);
-        // applyCSSModuleRule(
-        //   rules,
-        //   SASS_REGEX,
-        //   config.output.disableCssModuleExtension,
-        // );
       });
     },
   };

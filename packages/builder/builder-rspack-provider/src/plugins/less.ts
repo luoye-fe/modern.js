@@ -40,8 +40,6 @@ export function builderPluginLess(): BuilderPlugin {
         const { applyCSSModuleRule } = await import('./css');
         const config = api.getNormalizedConfig();
 
-        // const rules = rspackConfig.module?.rules;
-
         applyCSSModuleRule(rspackConfig, config, LESS_REGEX);
       });
     },
