@@ -1,0 +1,26 @@
+// Vitest Snapshot v1
+
+exports[`plugins/minimize > should apply css minimizer when not use native css 1`] = `
+[
+  CssMinimizerPlugin {
+    "options": {
+      "exclude": undefined,
+      "include": undefined,
+      "minimizer": {
+        "implementation": [Function],
+        "options": {
+          "preset": [
+            "default",
+            {
+              "mergeLonghand": false,
+            },
+          ],
+        },
+      },
+      "parallel": true,
+      "test": /\\\\\\.css\\(\\\\\\?\\.\\*\\)\\?\\$/i,
+      "warningsFilter": [Function],
+    },
+  },
+]
+`;

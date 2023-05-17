@@ -111,6 +111,7 @@ const convertToRspackConfig = (config: BundlerConfig): RspackConfig => {
       plugins: config.plugins as RspackConfig['plugins'],
       optimization: config.optimization
         ? {
+            ...config.optimization,
             splitChunks: formatSplitChunks(config.optimization?.splitChunks),
             runtimeChunk: config.optimization?.runtimeChunk,
           }

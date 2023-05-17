@@ -37,6 +37,31 @@ describe('plugins/minimize', () => {
       extractComments: true,
     });
 
+    expect(bundlerConfigs[0].optimization?.minimizer).toBeUndefined();
+
+    process.env.NODE_ENV = 'test';
+  });
+
+  it('should apply css minimizer when not use native css', async () => {
+    process.env.NODE_ENV = 'production';
+
+    const builder = await createBuilder({
+      plugins: [builderPluginMinimize()],
+      builderConfig: {
+        output: {
+          disableCssExtract: true,
+        },
+      },
+    });
+
+    const {
+      origin: { bundlerConfigs },
+    } = await builder.inspectConfig();
+
+    expect(bundlerConfigs[0].optimization?.minimize).toEqual(true);
+
+    expect(bundlerConfigs[0].optimization?.minimizer).toMatchSnapshot();
+
     process.env.NODE_ENV = 'test';
   });
 

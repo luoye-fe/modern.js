@@ -22,7 +22,7 @@ exports[`plugins/css > should apply ignoreCssLoader when disableCssExtract is tr
                 "auto": true,
                 "exportLocalsConvention": "camelCase",
                 "exportOnlyLocals": true,
-                "localIdentName": "[path][name]__[local]--[hash:base64:5]",
+                "localIdentName": "[path][name]__[local]--[xxhash64:hash:base64:5]",
               },
               "sourceMap": true,
             },
@@ -145,7 +145,7 @@ exports[`plugins/css > should use css-loader + style-loader when disableCssExtra
               "modules": {
                 "auto": true,
                 "exportLocalsConvention": "camelCase",
-                "localIdentName": "[path][name]__[local]--[hash:base64:5]",
+                "localIdentName": "[path][name]__[local]--[xxhash64:hash:base64:5]",
               },
               "sourceMap": true,
             },
