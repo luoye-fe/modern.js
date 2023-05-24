@@ -6,6 +6,7 @@ import {
 } from '@modern-js/utils/runtime-node/router';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { createRoutesFromElements } from '@modern-js/utils/runtime/router';
+import { logger } from '@modern-js/utils';
 import { RuntimeReactContext } from '../../core';
 import type { Plugin } from '../../core';
 import { SSRServerContext } from '../../ssr/serverRender/types';
@@ -20,8 +21,11 @@ installGlobals();
 // TODO: polish
 function createFetchRequest(req: SSRServerContext['request']): Request {
   // const origin = `${req.protocol}://${req.get('host')}`;
+  logger.warn('req', req);
+  logger.warn(`req.protocal: ${req.protocol}, host: ${req.host}`);
   const origin = `${req.protocol}://${req.host}`;
   // Note: This had to take originalUrl into account for presumably vite's proxying
+  logger.warn(`url: ${req.originalUrl || req.url}, origin: ${origin}`);
   const url = new URL(req.originalUrl || req.url, origin);
 
   const controller = new AbortController();
